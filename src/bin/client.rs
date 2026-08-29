@@ -3,6 +3,8 @@ use std::net::TcpStream;
 
 const BUFSIZE: usize = 512;
 
+// TODO: make the function request use the msg_buf field
+// instead of creating a new buffer in every call
 struct Client {
     msg_buf: [u8; BUFSIZE],
 }
