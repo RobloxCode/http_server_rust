@@ -1,6 +1,8 @@
 use std::io::{Read, Write};
 use std::net::TcpStream;
 
+const BUFSIZE: usize = 512;
+
 struct Client;
 
 impl Client {
@@ -12,7 +14,7 @@ impl Client {
 
         stream.write(b"Hello from the client")?;
 
-        let mut buff = [0; 512];
+        let mut buff = [0; BUFSIZE];
         stream.read(&mut buff)?;
 
         println!("Recieved: {}", String::from_utf8_lossy(&buff));

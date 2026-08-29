@@ -1,6 +1,8 @@
 use std::io::{Read, Write};
 use std::net::TcpListener;
 
+const BUFSIZE: usize = 512;
+
 struct Server;
 
 impl Server {
@@ -12,7 +14,7 @@ impl Server {
 
         for stream in listener.incoming() {
             let mut stream = stream?;
-            let mut buff = [0; 512];
+            let mut buff = [0; BUFSIZE];
             stream.read(&mut buff)?;
             stream.write(b"Hello from server")?;
         }
