@@ -3,7 +3,9 @@ use std::net::TcpStream;
 
 const BUFSIZE: usize = 512;
 
-struct Client;
+struct Client {
+    msg_buf: [u8; BUFSIZE],
+}
 
 impl Client {
     fn request(port: &str) -> std::io::Result<()> {
